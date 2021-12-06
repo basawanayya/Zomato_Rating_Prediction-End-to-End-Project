@@ -6,6 +6,7 @@ https://bangalore-zomato-rating-pred.herokuapp.com/
 User interface
 ![Screenshot_1](https://user-images.githubusercontent.com/56857382/144856980-2cc101a6-5745-4dd8-a379-d82395c19851.png)
 
+![Screenshot_2](https://user-images.githubusercontent.com/56857382/144868989-a79d3f47-7b98-4049-aafa-a705f5a4d353.png)
 
 EDA
 ![image](https://user-images.githubusercontent.com/56857382/143776908-ecd9b534-f01a-47d4-ba7f-e53035514a19.png)
