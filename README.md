@@ -2,7 +2,8 @@
 The main goal of this project is to perform extensive Exploratory Data Analysis(EDA) on the Zomato Dataset and build an appropriate Machine Learning Model that will help various Zomato Restaurants to predict their respective Ratings based on certain features.
 
 User interface
-![image](https://user-images.githubusercontent.com/56857382/143774733-6118ac54-d1c6-4a9a-805c-22b3ec075030.png)
+![Screenshot_1](https://user-images.githubusercontent.com/56857382/144856980-2cc101a6-5745-4dd8-a379-d82395c19851.png)
+
 
 EDA
 ![image](https://user-images.githubusercontent.com/56857382/143776908-ecd9b534-f01a-47d4-ba7f-e53035514a19.png)
