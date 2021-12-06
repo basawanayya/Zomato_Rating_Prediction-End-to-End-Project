@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Rate prediction</title>
+</head>
+<body>
+    <div class="login" style="color:rgb(255, 255, 255)">
+        <h1>Predict Zomato Restaurant Ratings</h1>
+    
+         <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}"method="post">
+            <!-- <h3>online Order</h3><br><input type="text" name="online Order" placeholder="online Order" required="required" /> <br> -->
+            <!-- <h3>Book Table</table></h3><br><input type="text" name="book_table" placeholder="book_table" required="required" /> <br> -->
+
+
+            <h3>Online Order</h3><select id="online_order" name="online Order" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+                
+            </select>
+            <h3>Book Table</table></h3><select id="book_table" name="book_table"  required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+
+            <h3>Votes</h3><input id="votes" type="text" name="votes" placeholder="votes" required="required" /><br>
+            <h3>Location</h3><input id="location" type="text" name="location" placeholder="location" required="required" /><br>
+            <h3>Restaurant Type</h3><input id="restautant" type="text" name="rest_type" placeholder="rest_type" required="required" /> <br>
+            <h3>Dish Liked</h3><input id="dish" type="text" name="dish_liked" placeholder="dish_liked" required="required" /><br>
+            <h3>Cuisines</h3><input id='cuisines' type="text" name="cuisines" placeholder="cuisines" required="required" /><br>
+            <h3>Cost for two people</h3><input id="cost_two" type="text" name="approx_cost(for two people)" placeholder="approx_cost(for two people)" required="required" /><br>
+            <!-- <h3>Listed in type</h3><br><input type="text" name="listed_in(type)" placeholder="listed_in(type)" required="required" /><br> -->
+            <h3>Listed in city</h3><input id="city" type="text" name="listed_in(city)" placeholder="listed_in(city)" required="required" /><br>  
+            </select>
+            <h3>Listed in type</table></h3><select id='listed_type' name="listed_in(type)"  required="required">
+                <option value="1">Buffet</option>
+                <option value="2">Cafes</option>
+                <option value="3">Delivery</option>
+                <option value="4">Desserts</option>
+                <option value="5">Dine-out</option>
+                <option value="6">Drinks & nightlife</option>
+                <option value="7">Pubs and bars</option>
+            </select>
+            
+            
+            <br>
+    <hr>
+            <button id="sub" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+    
+       <br>
+       <br>
+       {{ prediction_text }}
+    
+     </div>
+</body>
+
+
+
+
+
+<style>
+    body {
+    text-align: center;
+    padding: 0px;
+    background-image: url('/static/food.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+    }
+
+
+/*    
+    #box {
+        border-radius: 5px;
+        border-color: 45px;
+        border-style: solid;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-align: center;
+        background-color: rgb(255, 46, 9);
+        font-size: medium;
+        position: absolute;
+        width: 700px;
+        bottom: 9%;
+        height: 850px;
+        right: 30%;
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+    } */
+    
+    #online_order {
+        width: 300px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    
+    #online_order:hover {
+        background-color:palegoldenrod;
+    }
+    #book_table {
+        width: 300px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    
+    #book_table:hover {
+        background-color:palegoldenrod;}
+    #votes {
+        width: 300px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    
+    #location {
+        width: 300px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    
+    #restautant {
+        width: 300px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    
+    
+    
+    #dish {
+        width: 300px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+    
+    
+    #cuisines {
+        width: 300px;
+        border-radius: 5px;
+        height: 25px;
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    #cost_two{
+        width: 300px;
+        border-radius: 5px;
+        height: 25px;
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    #city {
+        width: 300px;
+        border-radius: 5px;
+        height: 25px;
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    #listed_type {
+        width: 300px;
+        border-radius: 5px;
+        height: 25px;
+        font-size: 18px;
+        text-align: center;
+    }
+    #listed_type:hover {
+        background-color:palegoldenrod;}
+    #sub {
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+    #sub:hover {
+        background-color:crimson;}
+    
+</style>
+</body>
+</html>
